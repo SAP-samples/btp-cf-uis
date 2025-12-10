@@ -1,0 +1,9 @@
+---
+applications:
+  - name: java-demo-app
+    instances: 1
+    path: target/java-demo-app-0.0.1-SNAPSHOT.jar
+    memory: 256M
+    disk_quota: 400M
+    buildpacks:
+      - sap_java_buildpack_jakarta

@@ -1,0 +1,20 @@
+{
+  "name": "node-demo-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/www",
+    "clean": "rm -rf build",
+    "build": "npm run clean && mkdir -p build && cp -r package.json *.js build/ && mkdir build/public build/bin build/routes build/views && cp -r public/* build/public/ && cp -r bin/* build/bin/ && cp -r routes/* build/routes/ && cp -r views/* build/views/",
+    "zip": "rm -rf build.zip && cd build && zip -r ../build.zip ."
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^5.1.0",
+    "http-errors": "~1.6.3",
+    "morgan": "^1.10.1",
+    "pug": "^3.0.3"
+  }
+}

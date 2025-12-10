@@ -1,0 +1,68 @@
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f0f2f5;
+  text-align: center;
+  padding-top: 50px;
+  margin: 0;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  margin: 5rem auto;
+  border-radius: 16px;
+  display: block;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container h1 {
+  font-size: 1.75rem;
+  color: #222;
+}
+
+.styled-button {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00a6ff, #007acc);
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.styled-button:hover {
+  background: linear-gradient(135deg, #008ed9, #0063aa);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.dark {
+  background-color: #1e2124;
+  color: #e0e0e0;
+}
+
+body.dark .container {
+  background: rgba(58, 61, 65, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .container h1 {
+  color: #ffffff;
+}
+
+body.dark .styled-button {
+  background: linear-gradient(135deg, #3399ff, #007acc);
+}
+
+body.dark .styled-button:hover {
+  background: linear-gradient(135deg, #2673cc, #005f99);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}

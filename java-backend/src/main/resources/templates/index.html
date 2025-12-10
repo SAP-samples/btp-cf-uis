@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to the Express Demo App</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body th:classappend="${darkMode} ? 'dark' : ''">
+<div class="container">
+    <h1 id="title">Welcome to the Express Demo App</h1>
+    <button id="hello-button" class="styled-button">Hello</button>
+    <button id="error-button" class="styled-button">Error</button>
+    <button id="home-button" class="styled-button" style="display: none;">← Home</button>
+</div>
+<script th:src="@{/frontend.js}"></script>
+</body>
+</html>
