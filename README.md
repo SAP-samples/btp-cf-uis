@@ -1,41 +1,80 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and REUSE.toml. All repositories on github.com/SAP-samples will be created based on this template.
+# Node.js + Express & Java Spring Boot + Thymeleaf Demo Apps
 
-# Containing Files
+This project contains two separate full-stack applications that serve the same purpose but are implemented in different technologies:
+- Node.js App: Express.js backend rendering HTML pages using the Pug template engine
+- Java App: Spring Boot backend rendering HTML pages using Thymeleaf templates
 
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+Both apps are structured for easy local development and deployment to SAP BTP Cockpit using Cloud Foundry.
 
-2. The REUSE.toml file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the REUSE.toml in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
+## Getting Started Locally
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
+### Start Locally
+#### Option 1: Run Node.js App Locally
+#### Prerequisites
+- Node.js (v18+ recommended)
 
-# [Title]
-<!-- Please include descriptive title -->
+``` bash 
+cd node-backend
+npm install
+npm start
+```
+You can view the app at:
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+``` 
+http://localhost:3000
+```
 
-## Description
-<!-- Please include SEO-friendly description -->
+#### Option 2: Run Java App Locally
+#### Prerequisites
+- Java (v17+ recommended)
+- Maven (for building the Java app)
 
-## Requirements
+``` bash 
+cd java-backend
+mvn clean install
+mvn spring-boot:run
+```
+You can view the app at:
 
-## Download and Installation
+``` 
+http://localhost:8080
+```
 
-## Known Issues
-<!-- You may simply state "No known issues. -->
+## Deploying to SAP BTP
+Each app is deployed independently and works as a self-contained full-stack app.
 
-## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
+### Node.js App
+```
+cd node-backend
+npm run build
+npm run zip
+cd ..
+```
+This will prepare a `build.zip` ready for deployment.
+1. Make sure the `build.zip` is located in the root directory.
+2. Check your `manifest.yaml`, located in `node-backend/manifest.yaml`
+3. Deploy the frontend using the BTP Cockpit UI:
+   - Go to Applications page and click Deploy button
+   - Upload the ZIP file from `node-backend/build.zip`
+   - Upload the `node-backend/manifest.yaml`
 
-## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+Make sure the application started successfully and is running.
 
-## License
-Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+### Java App
+```
+cd java-backend
+mvn clean install
+cd ..
+```
+1. Make sure the JAR is located in `java-backend/target/java-demo-app-0.0.1-SNAPSHOT.jar`
+2. Check your `manifest.yaml`, located in `java-backend/manifest.yaml`
+3. Deploy the backend using the BTP Cockpit UI:
+   - Go to Applications page and click Deploy button
+   - Upload the JAR file from `java-backend/target/java-demo-app-0.0.1-SNAPSHOT.jar`
+   - Upload the `java-backend/manifest.yaml`
+
+Make sure the application started successfully and is running.
+
+### Environment Variables
+Each app is configured to use environment variable for customization. By default, it is set to `false`.
+If you want to switch to dark theme, you can set the environment variable `DARK_MODE` to `true` in your BTP environment.
