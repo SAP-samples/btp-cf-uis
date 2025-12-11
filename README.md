@@ -1,4 +1,5 @@
 # Node.js + Express & Java Spring Boot + Thymeleaf Demo Apps
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-cf-uis)](https://api.reuse.software/info/github.com/SAP-samples/btp-cf-uis)
 
 This project contains two separate full-stack applications that serve the same purpose but are implemented in different technologies:
 - Node.js App: Express.js backend rendering HTML pages using the Pug template engine
